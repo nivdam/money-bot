@@ -1,6 +1,7 @@
 import { Client, LocalAuth } from "whatsapp-web.js";
 import fs from "fs";
 import axios from "axios";
+// @ts-ignore
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import creds from "../credentials.json"; // Load Google API credentials
 
