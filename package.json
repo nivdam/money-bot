@@ -4,8 +4,11 @@
   "description": "WhatsApp Expense Tracker Bot",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf dist && rm -rf node_modules && pnpm install",
     "build": "tsc",
+    "watch": "tsc --watch",
     "start": "node dist/index.js",
+    "dev": "pnpm build && nodemon --watch src --ext ts --exec 'pnpm build && node dist/index.js'",
     "verify": "tsc",
     "lint": "eslint src/**/*.ts --fix"
   },
@@ -22,6 +25,7 @@
     "@typescript-eslint/parser": "^8.24.0",
     "eslint": "^9.20.1",
     "eslint-define-config": "^2.1.0",
+    "nodemon": "^3.1.9",
     "typescript": "^5.7.3"
   }
 }

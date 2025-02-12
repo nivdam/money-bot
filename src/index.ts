@@ -3,7 +3,7 @@ import fs from "fs";
 import { JWT } from "google-auth-library";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { Client, LocalAuth } from "whatsapp-web.js";
-import creds from "./credentials.json"; // Load Google API credentials
+import creds from "../credentials.json"; // Load Google API credentials
 
 const client = new Client({
   authStrategy: new LocalAuth(),
@@ -70,7 +70,7 @@ const doc = new GoogleSpreadsheet(sheetId);
 const initGoogleSheet = async (): Promise<void> => {
   const jwt = new JWT({
     email: creds.client_email,
-    key: creds.private_key,
+    key: creds.private_key.replace(/\\n/g, "\n"),
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
