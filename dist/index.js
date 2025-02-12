@@ -12,11 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const whatsapp_web_js_1 = require("whatsapp-web.js");
-const fs_1 = __importDefault(require("fs"));
 const axios_1 = __importDefault(require("axios"));
+const fs_1 = __importDefault(require("fs"));
+const google_auth_library_1 = require("google-auth-library");
 const google_spreadsheet_1 = require("google-spreadsheet");
-const credentials_json_1 = __importDefault(require("../credentials.json")); // Load Google API credentials
+const whatsapp_web_js_1 = require("whatsapp-web.js");
+const credentials_json_1 = __importDefault(require("./credentials.json")); // Load Google API credentials
 const client = new whatsapp_web_js_1.Client({
     authStrategy: new whatsapp_web_js_1.LocalAuth(),
 });
@@ -70,7 +71,12 @@ const t = (key) => `${icons[key] || ""} ${translations[userLanguage][key] || key
 const sheetId = "YOUR_GOOGLE_SHEET_ID"; // Replace with your Google Sheet ID
 const doc = new google_spreadsheet_1.GoogleSpreadsheet(sheetId);
 const initGoogleSheet = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield doc.useServiceAccountAuth(credentials_json_1.default);
+    const jwt = new google_auth_library_1.JWT({
+        email: credentials_json_1.default.client_email,
+        key: credentials_json_1.default.private_key,
+        scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    });
+    yield doc.useServiceAccountAuth(jwt);
     yield doc.loadInfo();
 });
 const saveExpenseToGoogleSheets = (expense) => __awaiter(void 0, void 0, void 0, function* () {

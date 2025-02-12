@@ -1,6 +1,6 @@
-const { defineConfig } = require("eslint-define-config");
+import { defineConfig } from "eslint-define-config";
 
-module.exports = defineConfig({
+export default defineConfig({
   env: {
     browser: false,
     node: true,

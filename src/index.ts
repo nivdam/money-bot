@@ -1,8 +1,9 @@
-import { Client, LocalAuth } from "whatsapp-web.js";
-import fs from "fs";
 import axios from "axios";
+import fs from "fs";
+import { JWT } from "google-auth-library";
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import creds from "../credentials.json"; // Load Google API credentials
+import { Client, LocalAuth } from "whatsapp-web.js";
+import creds from "./credentials.json"; // Load Google API credentials
 
 const client = new Client({
   authStrategy: new LocalAuth(),
@@ -67,7 +68,13 @@ const sheetId: string = "YOUR_GOOGLE_SHEET_ID"; // Replace with your Google Shee
 const doc = new GoogleSpreadsheet(sheetId);
 
 const initGoogleSheet = async (): Promise<void> => {
-  await doc.useServiceAccountAuth(creds);
+  const jwt = new JWT({
+    email: creds.client_email,
+    key: creds.private_key,
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+  });
+
+  await doc.useServiceAccountAuth(jwt);
   await doc.loadInfo();
 };
 
