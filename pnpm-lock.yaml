@@ -20,11 +20,25 @@ importers:
       whatsapp-web.js:
         specifier: ^1.21.0
         version: 1.26.0
+    devDependencies:
+      '@types/google-spreadsheet':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@types/node':
+        specifier: ^22.13.1
+        version: 22.13.1
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
 
 packages:
 
   '@pedroslopez/moduleraid@5.0.2':
     resolution: {integrity: sha512-wtnBAETBVYZ9GvcbgdswRVSLkFkYAGv1KzwBBTeRXvGT9sb9cPllOgFFWXCn9PyARQ0H+Ijz6mmoRrGateUDxQ==}
+
+  '@types/google-spreadsheet@4.0.0':
+    resolution: {integrity: sha512-GdfhBRQcN1KhpZGbhOEu/Cj2LimDLUW7hVB/GD552F4IY4FuYFwYwIz1TIB7rRqMVnMy99RdwpgXPX0G5Uu+7g==}
+    deprecated: This is a stub types definition. google-spreadsheet provides its own type definitions, so you do not need this installed.
 
   '@types/node@22.13.1':
     resolution: {integrity: sha512-jK8uzQlrvXqEU91UxiK5J7pKHyzgnI1Qnl0QDHIgVGuolJhRb9EEl28Cj9b3rGR8B2lhFCtvIm5os8lFnO/1Ew==}
@@ -482,6 +496,11 @@ packages:
   traverse@0.3.9:
     resolution: {integrity: sha512-iawgk0hLP3SxGKDfnDJf8wTz4p2qImnyihM5Hh/sGvQ3K37dPi/w8sRhdNIxYA1TwFwc5mDhIJq+O0RsvXBKdQ==}
 
+  typescript@5.7.3:
+    resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   unbzip2-stream@1.4.3:
     resolution: {integrity: sha512-mlExGW4w71ebDJviH16lQLtZS32VKqsSfk80GCfUlwT/4/hNRFsoscrF/c++9xinkMzECL1uL9DDwXqFWkruPg==}
 
@@ -541,10 +560,17 @@ snapshots:
 
   '@pedroslopez/moduleraid@5.0.2': {}
 
+  '@types/google-spreadsheet@4.0.0':
+    dependencies:
+      google-spreadsheet: 3.3.0
+    transitivePeerDependencies:
+      - debug
+      - encoding
+      - supports-color
+
   '@types/node@22.13.1':
     dependencies:
       undici-types: 6.20.0
-    optional: true
 
   '@types/yauzl@2.10.3':
     dependencies:
@@ -1100,13 +1126,14 @@ snapshots:
   traverse@0.3.9:
     optional: true
 
+  typescript@5.7.3: {}
+
   unbzip2-stream@1.4.3:
     dependencies:
       buffer: 5.7.1
       through: 2.3.8
 
-  undici-types@6.20.0:
-    optional: true
+  undici-types@6.20.0: {}
 
   universalify@2.0.1:
     optional: true
