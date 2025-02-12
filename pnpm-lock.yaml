@@ -18,7 +18,7 @@ importers:
         specifier: ^9.15.1
         version: 9.15.1
       google-spreadsheet:
-        specifier: '4'
+        specifier: ^4.1.4
         version: 4.1.4(google-auth-library@9.15.1)
       whatsapp-web.js:
         specifier: ^1.21.0
