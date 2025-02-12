@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const whatsapp_web_js_1 = require("whatsapp-web.js");
 const fs_1 = __importDefault(require("fs"));
 const axios_1 = __importDefault(require("axios"));
-// @ts-ignore
 const google_spreadsheet_1 = require("google-spreadsheet");
 const credentials_json_1 = __importDefault(require("../credentials.json")); // Load Google API credentials
 const client = new whatsapp_web_js_1.Client({
